@@ -12,7 +12,7 @@ Rocket Mapper is meant to display the rocket launches nearest to the user at the
 
 ## Current TODO:
 1. Add Constraints to the Home View
-2. Start using CoreLocation to display the user's location in Lat/Lon
+2. Remove Google Maps, and move to MapKit
 3. Change the maps instance to center on the phone's coordinates
 4. Start reading from the API
 5. Start Populating the view from the API

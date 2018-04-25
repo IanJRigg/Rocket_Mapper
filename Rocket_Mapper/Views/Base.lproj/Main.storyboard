@@ -61,7 +61,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="Launch Map"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="F9A-aF-fz7"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="LaunchMapSegue" id="9s6-Na-4Fx"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NaF-Vn-sed">
@@ -80,10 +80,12 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HwK-Gc-7H3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="Vno-Jp-RPF"/>
+                    <connections>
+                        <outlet property="LaunchMapsButton" destination="uom-Yx-H9i" id="FOv-Fg-8o9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njC-Bp-k9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

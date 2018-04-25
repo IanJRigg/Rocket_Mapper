@@ -12,6 +12,8 @@ import CoreLocation
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var LaunchMapsButton: UIButton!
+
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -28,21 +30,31 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LaunchMapSegue" {
+            if let destinationViewController = segue.destination as? MapsViewController {
+
+            }
+        }
+    }
 }
 
+
 extension HomeViewController: CLLocationManagerDelegate {
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[locations.count - 1]
         
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
-            print("Latitude: \(location.coordinate.latitude), Longitude: \(location.coordinate.longitude)")
+            
+            latitude  = location.coordinate.latitude
+            longitude = location.coordinate.longitude
+            
+            print("\(latitude) \(longitude)")
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
-    
 }
