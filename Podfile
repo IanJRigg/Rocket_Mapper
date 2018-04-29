@@ -8,6 +8,7 @@ target 'Rocket_Mapper' do
   # Pods for Rocket_Mapper
   pod 'GoogleMaps'
   pod 'Alamofire'
+  pod 'SwiftyJSON'
 
   target 'Rocket_MapperTests' do
     inherit! :search_paths

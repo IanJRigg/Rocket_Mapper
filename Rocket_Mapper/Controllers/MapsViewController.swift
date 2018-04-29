@@ -8,37 +8,82 @@
 
 import UIKit
 import MapKit
+import CoreLocation
+import Alamofire
+import SwiftyJSON
 
 class MapsViewController: UIViewController {
-
+    
     @IBOutlet weak var mapView: MKMapView!
+    
+    let LaunchLibraryUrl: String = "https://launchlibrary.net/1.4/launch/"
+    
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        prepareMapView()
+        prepareLocationManager()
+        getLaunches()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func prepareMapView() {
-        // 1
-        let location = CLLocationCoordinate2D(latitude:  0.0, longitude: 0.0)
-        
-        // 2
-        let span = MKCoordinateSpanMake(0.001, 0.001)
+
+    // MARK: MapKit Handlers
+    // General handler used for failed lookups
+    func focusMap() {
+        let span = MKCoordinateSpanMake(100.0, 100.0)
+        let location = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
         let region = MKCoordinateRegion(center: location, span: span)
         mapView.setRegion(region, animated: true)
+    }
+    
+    // Specific handler used for successful lookups
+    func focusMap(on location: CLLocationCoordinate2D) {
+        let span = MKCoordinateSpanMake(40.0, 40.0)
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    // MARK: Network Handlers
+    func getLaunches() {
         
-        //3
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = location
-//        annotation.title = "Big Ben"
-//        annotation.subtitle = "London"
-//        mapView.addAnnotation(annotation)
+        let parameters: Parameters? = [
+            "next": 20
+        ]
+        
+        Alamofire.request(LaunchLibraryUrl, method: .get, parameters: parameters).responseJSON { response in
+            if response.result.isSuccess {
+                print("Did it")
+            }
+        }
+    }
+}
+
+
+extension MapsViewController: CLLocationManagerDelegate {
+    
+    func prepareLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Locations were updated!!!")
+        if let location = locations.first {
+            focusMap(on: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+            print("Found a location")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Not able to find a location. \(error)")
+        focusMap()
     }
 }
 
