@@ -20,6 +20,7 @@
 		B9004C2F208BCE0200781D5E /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9004C2E208BCE0200781D5E /* ApiKeys.plist */; };
 		B9004C30208BCE0200781D5E /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9004C2E208BCE0200781D5E /* ApiKeys.plist */; };
 		B9004C31208BCE0200781D5E /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9004C2E208BCE0200781D5E /* ApiKeys.plist */; };
+		B9CF4E5D2096CC3300882DAA /* launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CF4E5C2096CC3300882DAA /* launch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		B9004C1D208BC85600781D5E /* Rocket_MapperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket_MapperUITests.swift; sourceTree = "<group>"; };
 		B9004C1F208BC85600781D5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9004C2E208BCE0200781D5E /* ApiKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		B9CF4E5C2096CC3300882DAA /* launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = launch.swift; sourceTree = "<group>"; };
 		D87259FB475E06453D8160CA /* Pods-Rocket_Mapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rocket_Mapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rocket_Mapper/Pods-Rocket_Mapper.release.xcconfig"; sourceTree = "<group>"; };
 		E0AEC5FD27E0CC2775735E7C /* Pods-Rocket_MapperUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rocket_MapperUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rocket_MapperUITests/Pods-Rocket_MapperUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F0459680C10A9A005629345B /* Pods_Rocket_Mapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rocket_Mapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +175,7 @@
 		B9004C2B208BC86F00781D5E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B9CF4E5C2096CC3300882DAA /* launch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 			files = (
 				B9004C00208BC85600781D5E /* MapsViewController.swift in Sources */,
 				B9004BFE208BC85600781D5E /* AppDelegate.swift in Sources */,
+				B9CF4E5D2096CC3300882DAA /* launch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

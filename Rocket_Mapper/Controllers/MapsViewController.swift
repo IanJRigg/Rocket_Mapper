@@ -52,13 +52,20 @@ class MapsViewController: UIViewController {
     func getLaunches() {
         
         let parameters: Parameters? = [
-            "next": 20
+            "next": 1
         ]
         
-        Alamofire.request(LaunchLibraryUrl, method: .get, parameters: parameters).responseJSON { response in
-            if response.result.isSuccess {
-                print("Did it")
-            }
+        Alamofire.request(LaunchLibraryUrl, method: .get, parameters: parameters!).responseJSON { response in
+            guard (response.result.value != nil) else { return }
+            guard (response.result.isSuccess) else { return }
+        
+            print("Did it")
+            print(response.request!)
+
+            let json = JSON(response.result.value!)
+
+            print(json["launches"][0]["location"]["pads"][0]["longitude"])
+            print(json["launches"][0]["location"]["pads"][0]["latitude"])
         }
     }
 }
