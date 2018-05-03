@@ -7,11 +7,20 @@
 //
 
 import Foundation
+import CoreLocation
+import MapKit
 
-class Launch {
-    let latitude: Double  = 0.0
-    let longitude: Double = 0.0
+class Launch:  MKPointAnnotation{
+    private var site: String = ""
+    private var windowStart: String = ""
+    private var windowEnd: String = ""
     
-    let site: String = ""
-    let date: Date = Date()
+    init(coordinate: CLLocationCoordinate2D, site: String, windowStart: String, windowEnd: String) {
+        super.init()
+
+        self.coordinate = coordinate
+        self.site = site
+        self.windowStart = windowStart
+        self.windowEnd = windowEnd
+    }
 }
