@@ -59,23 +59,19 @@ class MapsViewController: UIViewController {
         Alamofire.request(launchLibraryUrl, method: .get, parameters: parameters!).responseJSON { response in
             guard (response.result.value != nil) else { return }
             guard (response.result.isSuccess) else { return }
-        
-            print("Did it")
-            print(response.request!)
-            print(response)
 
             let json = JSON(response.result.value!)
             
             for index in 1...self.numberOfLaunchesToDisplay {
                 guard (json["launches"][index] != nil) else { break }
                 
-                let coordinates = CLLocationCoordinate2D(latitude:  json["launches"][index]["location"]["pads"][0]["latitude"].doubleValue,
-                                                         longitude: json["launches"][index]["location"]["pads"][0]["longitude"].doubleValue)
+                let coordinate = CLLocationCoordinate2D(latitude:  json["launches"][index]["location"]["pads"][0]["latitude"].doubleValue,
+                                                        longitude: json["launches"][index]["location"]["pads"][0]["longitude"].doubleValue)
 
-                let launch = Launch(coordinate: coordinates,
-                                    site: (json["launches"][index]["location"]["name"].string ?? "Unknown"),
-                                    windowStart: (json["launches"][index]["windowstart"].string ?? "Unknown"),
-                                    windowEnd: (json["launches"][index]["windowend"].string ?? "Unknown"))
+                let launch = Launch(coordinate: coordinate, response: json)
+//                                    site: (json["launches"][index]["location"]["name"].string ?? "Unknown"),
+//                                    windowStart: (json["launches"][index]["windowstart"].string ?? "Unknown"),
+//                                    windowEnd: (json["launches"][index]["windowend"].string ?? "Unknown"))
                 
                 self.mapView.addAnnotation(launch)
             }

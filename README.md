@@ -3,17 +3,4 @@ The following is my first attempt at making an iOS Application after going throu
 
 
 ## What does it do?
-Rocket Mapper is meant to display the rocket launches nearest to the user at the time of coming on screen. To do this there are currently two planned features:
-
-1. A list of the 5 nearest launches to the user
-
-2. A Google Maps interface which shows all of the launches within the next 2 weeks.
-
-
-## Current TODO:
-1. Add Constraints to the Home View
-2. Remove Google Maps, and move to MapKit
-3. Change the maps instance to center on the phone's coordinates
-4. Start reading from the API
-5. Start Populating the view from the API
-
+Rocket Mapper is meant to display the rocket launches nearest to the user when the map appears on screen.

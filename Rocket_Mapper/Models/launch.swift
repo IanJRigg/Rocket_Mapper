@@ -9,18 +9,16 @@
 import Foundation
 import CoreLocation
 import MapKit
+import SwiftyJSON
 
-class Launch:  MKPointAnnotation{
-    private var site: String = ""
-    private var windowStart: String = ""
-    private var windowEnd: String = ""
+class Launch:  MKPointAnnotation {
     
-    init(coordinate: CLLocationCoordinate2D, site: String, windowStart: String, windowEnd: String) {
+    var response: JSON = JSON()
+    
+    init(coordinate: CLLocationCoordinate2D, response: JSON) {
         super.init()
 
         self.coordinate = coordinate
-        self.site = site
-        self.windowStart = windowStart
-        self.windowEnd = windowEnd
+        self.response = response
     }
 }
